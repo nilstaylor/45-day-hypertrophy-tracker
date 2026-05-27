@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background: radial-gradient(1200px 600px at 0% -10%, rgba(57, 255, 138, 0.06), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(58, 214, 255, 0.05), transparent 60%), #0a0b0d;
+    min-height: 100dvh;
+    -webkit-tap-highlight-color: transparent;
+  }
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+  /* Hide number spinners on mobile-friendly inputs */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+  /* Focus rings */
+  *:focus-visible {
+    outline: 2px solid #39ff8a;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-ink-900/80 border border-ink-700/60 backdrop-blur-sm;
+  }
+  .card-tight {
+    @apply rounded-xl bg-ink-850 border border-ink-700/70;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold tracking-tight transition-all active:scale-[0.98] select-none touch-manipulation min-h-[48px];
+  }
+  .btn-primary {
+    @apply btn bg-neon-green text-ink-950 hover:bg-neon-greenDim;
+  }
+  .btn-secondary {
+    @apply btn bg-ink-800 text-ink-100 border border-ink-700 hover:bg-ink-700;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-300 border border-ink-700 hover:bg-ink-800;
+  }
+  .btn-danger {
+    @apply btn bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25;
+  }
+  .input {
+    @apply w-full rounded-xl bg-ink-850 border border-ink-700 px-4 py-3 text-ink-100 placeholder:text-ink-500 focus:border-neon-green focus:bg-ink-900 transition-colors min-h-[48px];
+  }
+  .label {
+    @apply block text-xs uppercase tracking-[0.14em] font-semibold text-ink-400 mb-1.5;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .display {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+}
