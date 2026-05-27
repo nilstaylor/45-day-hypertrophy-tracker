@@ -63,5 +63,4 @@ export const KEYS = {
   settings: 'hyp45.settings.v1',
   daily: 'hyp45.daily.v1', // map of YYYY-MM-DD -> daily entry
   workouts: 'hyp45.workouts.v1', // array of completed workout logs
-  appleWorkouts: 'hyp45.appleWorkouts.v1', // array of imported Apple Health workouts
 };

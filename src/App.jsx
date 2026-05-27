@@ -5,7 +5,6 @@ import { TodayChecklist } from './components/TodayChecklist.jsx';
 import { SettingsModal } from './components/SettingsModal.jsx';
 import { IntakeLogger } from './components/IntakeLogger.jsx';
 import { WorkoutScreen } from './components/WorkoutScreen.jsx';
-import { AppleHealthPanel } from './components/AppleHealthPanel.jsx';
 import { WORKOUTS, workoutById } from './data/workouts.js';
 import { usePersistentState } from './hooks/usePersistentState.js';
 import { KEYS, storage } from './lib/storage.js';
@@ -24,7 +23,6 @@ export default function App() {
   const [settings, setSettings] = usePersistentState(KEYS.settings, DEFAULT_SETTINGS);
   const [dailyMap, setDailyMap] = usePersistentState(KEYS.daily, {});
   const [workoutLogs, setWorkoutLogs] = usePersistentState(KEYS.workouts, []);
-  const [appleWorkouts, setAppleWorkouts] = usePersistentState(KEYS.appleWorkouts, []);
 
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [activeWorkoutId, setActiveWorkoutId] = useState(null);
@@ -180,8 +178,6 @@ export default function App() {
         onResetToday={resetToday}
         onOpenSettings={() => setSettingsOpen(true)}
         storageAvailable={storage.available()}
-        appleWorkouts={appleWorkouts}
-        onAppleWorkoutsChange={setAppleWorkouts}
       />
       <SettingsModal
         open={settingsOpen}
@@ -250,8 +246,6 @@ function Dashboard({
   onResetToday,
   onOpenSettings,
   storageAvailable,
-  appleWorkouts,
-  onAppleWorkoutsChange,
 }) {
   const recommended = workoutById(recommendedWorkoutId);
   return (
@@ -329,11 +323,6 @@ function Dashboard({
           </div>
         </div>
       </section>
-
-      <AppleHealthPanel
-        imported={appleWorkouts}
-        onImportedChange={onAppleWorkoutsChange}
-      />
 
       {/* Macros */}
       <section className="space-y-3">
